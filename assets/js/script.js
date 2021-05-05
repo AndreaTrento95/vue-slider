@@ -2,6 +2,9 @@ const app = new Vue({
 
     el: '#app',
     data:{
+        color: [
+            'blue'
+        ],
         counter: 0,
         images:[
             'assets/img/IMG_20181229_164556.jpg',
@@ -13,10 +16,17 @@ const app = new Vue({
     },
     methods:{
         nextImage(){
-            counter++;
+            this.counter++;
+            if(this.counter > this.images.length - 1 ){
+                this.counter = 0;
+            }
+
         },
         prevImage(){
-
+            this.counter--;
+            if(this.counter < 0){
+                this.counter = this.images.length - 1;
+            }
         }
     }
 });
